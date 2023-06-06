@@ -27,10 +27,8 @@ public class App {
             System.out.println(school.getPrincipal());
 
             // hql запрос который удаляет всех Директоров начинающихся на "test"
-            System.out.println("\n\nHELLO");
             session.createQuery("DELETE FROM Principal WHERE name LIKE 'test%'").executeUpdate();
             session.createQuery("DELETE FROM School WHERE name = 720").executeUpdate();
-            System.out.println("HELLO\n\n");
 
             // Создайте нового директора и новую школу и свяжите эти сущности.
             Principal principal1 = new Principal("testPrincipal1", 54);
