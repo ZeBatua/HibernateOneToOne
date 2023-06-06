@@ -1,5 +1,7 @@
 package hiber.proj.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,15 +20,15 @@ public class Principal {
     int age;
 
     @OneToOne(mappedBy = "principal")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private School school;
 
     public Principal() {
     }
 
-    public Principal(String name, int age, School school) {
+    public Principal(String name, int age) {
         this.name = name;
         this.age = age;
-        this.school = school;
     }
 
     public int getId() {

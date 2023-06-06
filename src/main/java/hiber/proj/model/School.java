@@ -1,5 +1,7 @@
 package hiber.proj.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,16 +14,17 @@ public class School {
     int id;
 
     @Column(name = "school_number")
-    String name;
+    int name;
 
     @OneToOne
     @JoinColumn(name = "principal_id", referencedColumnName = "id")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Principal principal;
 
     public School() {
     }
 
-    public School(String name, Principal principal) {
+    public School(int name, Principal principal) {
         this.name = name;
         this.principal = principal;
     }
@@ -34,11 +37,11 @@ public class School {
         this.id = id;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
@@ -53,7 +56,8 @@ public class School {
     @Override
     public String toString() {
         return "School{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name=" + name +
                 '}';
     }
 }
